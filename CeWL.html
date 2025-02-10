@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CeWL Intelligence Gathering Exercise</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
+        h1, h2, h3 { color: #333; }
+        code { background: #f4f4f4; padding: 5px; display: block; border-radius: 5px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h1>Mission Brief: CeWL Intelligence Gathering Exercise</h1>
+        <h2>Prerequisites:</h2>
+        <p>
+            
+            <ol>
+                <li><a href="https://nps.edu/web/c3o/labtainers">Labtainer VM</a></li>
+                <li>Imodule Installed</li>
+                The imodule for this lab is hosted <a href="https://github.com/tdanko128/imodule.io/raw/main/imodule.tar">here</a> and can be installed with:
+                <pre><code>imodule https://github.com/tdanko128/imodule.io/raw/main/imodule.tar</code></pre>
+                Please note that if you already have this imodule and are not able to find the lab please run:
+                <pre><code>imodule -u</code></pre>
+            </ol>
+        <h2>Operation: Ethereal Reconnaissance</h2>
+        <p><strong>Agent, your mission is to conduct a reconnaissance operation on Ethreal, a fictitious entity operating under unknown directives. Your objective is to gather intelligence using CeWL and analyze potential vulnerabilities.</strong></p>
+
+        <h2>Mission Objectives</h2>
+        <h3>1. Infiltrate the Target Network</h3>
+        <ul>
+            <li>Access the Ethreal website running on <a href="https://ethreal.com">https://ethreal.com</a>.</li>
+            <li>Confirm successful connectivity and reconnaissance parameters.</li>
+        </ul>
+
+        <h3>2. Deploy Intelligence-Gathering Tools</h3>
+        <ul>
+            <li>Execute a series of <strong>CeWL</strong> commands to extract key intelligence, including structured wordlists and email addresses.</li>
+            <li>Maintain operational security while conducting extractions.</li>
+        </ul>
+
+        <h3>3. Analyze Collected Data</h3>
+        <ul>
+            <li>Cross-reference wordlists for high-value keywords and domain-specific terms.</li>
+            <li>Evaluate extracted email addresses for potential security exposures.</li>
+        </ul>
+
+        <h3>4. File Your Intelligence Report</h3>
+        <ul>
+            <li>Submit all extracted wordlists and email data.</li>
+            <li>Provide a <strong>detailed analysis</strong> of your findings.</li>
+            <li>Recommend <strong>defensive countermeasures</strong> Ethereal could implement to mitigate intelligence leaks.</li>
+        </ul>
+
+        <h2>Mission Execution: CeWL Commands</h2>
+        <h3>Initalize the Lab</h3>
+        <pre><code>labtainer cewl</code></pre>
+
+        <h3>Visit the Target Site (Optional)</h3>
+        <pre><code>firefox ethreal.com</code></pre>
+
+        <h3>Review CeWL Options</h3>
+        <pre><code>cewl -h </code></pre>
+
+        <h3>Basic Wordlist Extraction</h3>
+        <p>This command scrapes words from the homepage of the target website and prints them to the terminal.</p>
+        <pre><code class="language-css">cewl https://ethreal.com</code></pre>
+
+        <h3>Saving a Wordlist</h3>
+        <p>The -w option saves the extracted words into a file for later use.</p>
+        <pre><code class="language-css">cewl -w wordlist.txt https://ethreal.com</code></pre>
+
+        <h3>Setting Crawl Depth</h3>
+        <p>The -d option tells CeWL to follow links within the website. A depth of 2 means it will scrape the main page and follow internal links up to two levels deep. This is the default setting. Try scanning at a depth of 1.</p>
+        <pre><code class="language-css">cewl -d 1 -w depth1_wordlist.txt https://ethreal.com</code></pre>
+
+        <h3>Setting Minimum Word Length</h3>
+        <p>The -m option filters out words shorter than a specified length. The default is 3 characters. Here, only words with at least 5 characters will be saved.</p>
+        <pre><code class="language-css">cewl -m 5 -w min5_wordlist.txt https://ethreal.com</code></pre>
+
+        <h3>Extracting Emails</h3>
+        <p>The -e flag enables email extraction from the webpage, saving the results into a text file.</p>
+        <pre><code class="language-css">cewl -e --email_file emails.txt https://ethreal.com/contact</code></pre>
+
+
+        <h3>Including Numbers</h3>
+        <p>The --with-numbers allows CeWL to include words that contain numbers.</p>
+        <pre><code class="language-css">cewl --with-numbers -w number_wordlist.txt https://ethreal.com</code></pre>
+
+        <h2>Intelligence Report: Analysis Questions</h2>
+        <ul>
+            <li>Compare the different wordlists you generated. Which provided the most useful data?</li>
+            <li>Were all emails successfully scraped? Why or why not?</li>
+            <li>How does setting different depth levels impact the extraction results?</li>
+            <li>How can CeWL be used in a real-world cybersecurity attack?</li>
+            <li>What defenses can websites implement to prevent scraping?</li>
+        </ul>
+
+        <h2>Final Submission</h2>
+        <h3>Deliverables</h3>
+        <ul>
+            <li><strong>Extracted Wordlists</strong> (wordlist.txt, depth2_wordlist.txt, etc.).</li>
+            <li><strong>Email List</strong> (emails.txt).</li>
+            <li><strong>Mission Analysis Report</strong> answering the questions above.</li>
+        </ul>
+
+        <p><strong>This mission is time-sensitive. Proceed with caution.</strong> 🚀</p>
+    </div>
+</body>
+</html>
