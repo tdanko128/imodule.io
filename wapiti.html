@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wapiti & Nikto Vulnerability Analysis Assignment</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
+        h1, h2, h3 { color: #333; }
+        code { background: #f4f4f4; padding: 5px; display: block; border-radius: 5px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h1>Mission Brief: Web Vulnerability Analysis</h1>
+        
+        <h2>Prerequisites:</h2>
+        <ul>
+            <li><a href="https://nps.edu/web/c3o/labtainers">Labtainer VM</a></li>
+            <li>Imodule Installed</li>
+            The imodule for this lab is hosted <a href="https://github.com/tdanko128/imodule.io/raw/main/imodule.tar">here</a> and can be installed with:
+            <pre><code>imodule https://github.com/tdanko128/imodule.io/raw/main/imodule.tar</code></pre>
+            Please note that if you already have this imodule and are not able to find the lab please run:
+            <pre><code>imodule -u</code></pre>
+        </ul>
+        
+        <h2>Operation: Ethreal Web Security Assessment</h2>
+        <p><strong>Agent, your mission is to assess the security of Ethreal, a fictitious entity operating under unknown directives. Your objective is to conduct a vulnerability assessment using Wapiti and Nikto, analyze the reports, and recommend security improvements.</strong></p>
+        
+        <h2>Mission Objectives</h2>
+        
+        <h3>1. Infiltrate the Target Network</h3>
+        <ul>
+            <li>Access the Ethreal website running on <a href="https://ethreal.com">https://ethreal.com</a>.</li>
+            <li>Confirm successful connectivity and reconnaissance parameters.</li>
+        </ul>
+
+        <h3>2. Deploy Web Vulnerability Scanners</h3>
+        <ul>
+            <li>Execute a series of <strong>Wapiti</strong> and <strong>Nikto</strong> scans against the target.</li>
+            <li>Generate structured <strong>HTML reports</strong> for review.</li>
+        </ul>
+
+        <h3>3. Analyze Collected Data</h3>
+        <ul>
+            <li>Compare vulnerabilities detected by Wapiti and Nikto.</li>
+            <li>Evaluate the differences in scanning methodologies and detection capabilities.</li>
+        </ul>
+
+        <h3>4. File Your Intelligence Report</h3>
+        <ul>
+            <li>Submit both HTML reports.</li>
+            <li>Provide a <strong>detailed analysis</strong> of findings.</li>
+            <li>Recommend <strong>defensive countermeasures</strong> Ethreal could implement to mitigate security risks.</li>
+        </ul>
+
+        <h2>Mission Execution: Wapiti & Nikto Commands</h2>
+        
+        <h3>Initialize the Lab</h3>
+        <pre><code>labtainer webscan</code></pre>
+        
+        <h3>Visit the Target Site (Optional)</h3>
+        <pre><code>firefox https://ethreal.com</code></pre>
+        
+        <h3>Run Wapiti Scan</h3>
+        <p>Execute Wapiti against the target web application and generate an HTML report.</p>
+        <pre><code>wapiti -u http://ethreal.com -o wapiti_report -f html</code></pre>
+        
+        <h3>Run Nikto Scan</h3>
+        <p>Run Nikto to scan the same target and output an HTML report.</p>
+        <ol>
+            <li><pre><code>wget --spider --no-check-certificate -r -nd https://ethereal.com -o urls.txt</code></pre></li>
+            <li><pre><code>cat urls.txt | grep "https" | awk '{print $3}' | sort -u > targets.txt</code></pre></li>
+            <li><pre><code>for url in $(cat targets.txt); do nikto -h $url -o "nikto_${url##*/}.html" -Format htm; done</code></pre></li>
+        </ol>
+        
+        <h2>Intelligence Report: Analysis Questions</h2> 
+        <ul>
+            <li>Which tool detected more vulnerabilities? Why do you think that is?</li>
+            <li>What types of vulnerabilities did Wapiti detect that Nikto missed?</li>
+            <li>What types of vulnerabilities did Nikto detect that Wapiti missed?</li>
+            <li>How do the scanning methodologies differ between Wapiti and Nikto?</li>
+            <li>What defensive measures could mitigate these vulnerabilities?</li>
+        </ul>
+        
+        <h2>Final Submission</h2>
+        <h3>Deliverables</h3>
+        <ul>
+            <li><strong>Wapiti Report</strong> (HTML file).</li>
+            <li><strong>Nikto Report</strong> (HTML file).</li>
+            <li><strong>Mission Analysis Report</strong> answering the questions above.</li>
+        </ul>
+
+        <p><strong>This mission is time-sensitive. Proceed with caution.</strong> 🚀</p>
+    </div>
+</body>
+</html>
+

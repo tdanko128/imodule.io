@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLMap Web Vulnerability Analysis Assignment</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
+        h1, h2, h3 { color: #333; }
+        code { background: #f4f4f4; padding: 5px; display: block; border-radius: 5px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h1>Mission Brief: SQL Injection Analysis</h1>
+        
+        <h2>Prerequisites:</h2>
+        <ul>
+            <li><a href="https://nps.edu/web/c3o/labtainers">Labtainer VM</a></li>
+            <li>Imodule Installed</li>
+            The imodule for this lab is hosted <a href="https://github.com/tdanko128/imodule.io/raw/main/imodule.tar">here</a> and can be installed with:
+            <pre><code>imodule https://github.com/tdanko128/imodule.io/raw/main/imodule.tar</code></pre>
+            Please note that if you already have this imodule and are not able to find the lab please run:
+            <pre><code>imodule -u</code></pre>
+        </ul>
+        
+        <h2>Operation: SQL Injection Detection</h2>
+        <p><strong>Agent, your mission is to assess the security of Ethreal, a fictitious entity. Your objective is to test for SQL Injection vulnerabilities using SQLMap, analyze the reports, and recommend security improvements.</strong></p>
+        
+        <h2>Mission Objectives</h2>
+        
+        <h3>1. Identify Vulnerable Endpoints</h3>
+        <ul>
+            <li>Access the Ethreal website running on <a href="https://ethreal.com">https://ethreal.com</a>.</li>
+            <li>Identify input fields and parameters that may be vulnerable to SQL injection.</li>
+        </ul>
+
+        <h3>2. Run SQLMap</h3>
+        <ul>
+            <li>Execute SQLMap against identified endpoints to test for SQL Injection vulnerabilities.</li>
+            <li>Generate structured <strong>HTML reports</strong> for review.</li>
+        </ul>
+
+        <h3>3. Analyze Collected Data</h3>
+        <ul>
+            <li>Determine if the database is vulnerable to SQL injection.</li>
+            <li>Evaluate the database structure, if accessible.</li>
+        </ul>
+
+        <h3>4. Explore Different SQL Injection Techniques</h3>
+        <p>Use the following techniques to gain a deeper understanding of SQLMap:</p>
+        <ul>
+            <li><strong>Boolean-Based SQL Injection</strong>: Detects vulnerabilities by evaluating True/False conditions.</li>
+            <pre><code>sqlmap -u "https://ethreal.com/index.php?id=1" --data="username=finnwise" --technique=B</code></pre>
+            
+            <li><strong>Time-Based Blind SQL Injection</strong>: Determines vulnerabilities by measuring response time.</li>
+            <pre><code>sqlmap -u "https://ethreal.com/index.php?id=1" --data="username=finnwise" --technique=T</code></pre>
+            
+            <li><strong>Error-Based SQL Injection</strong>: Extracts database details using error messages.</li>
+            <pre><code>sqlmap -u "https://ethreal.com/index.php?id=1" --data="username=finnwise" --technique=E</code></pre>
+            
+            <li><strong>Dumping Database Tables</strong>: Retrieves database information.</li>
+            <pre><code>sqlmap -u "https://ethreal.com/index.php?id=1" --data="username=finnwise" -D database_name --tables</code></pre>
+        </ul>
+        
+        <h3>5. File Your Intelligence Report</h3>
+        <ul>
+            <li>Submit the SQLMap HTML report.</li>
+            <li>Provide a <strong>detailed analysis</strong> of findings.</li>
+            <li>Recommend <strong>defensive countermeasures</strong> Ethreal could implement to mitigate security risks.</li>
+        </ul>
+
+        <h2>Intelligence Report: Analysis Questions</h2>
+        <ul>
+            <li>Was the site vulnerable to SQL injection? If so, what risks were identified?</li>
+            <li>What type of database management system (DBMS) was detected?</li>
+            <li>What countermeasures can mitigate SQL injection vulnerabilities?</li>
+            <li>What are the potential risks of a successful SQL injection attack?</li>
+            <li>Which SQL injection technique provided the most useful information?</li>
+        </ul>
+        
+        <h2>Final Submission</h2>
+        <h3>Deliverables</h3>
+        <ul>
+            <li><strong>SQLMap Report</strong> (HTML file).</li>
+            <li><strong>Mission Analysis Report</strong> answering the questions above.</li>
+        </ul>
+
+        <p><strong>This mission is time-sensitive. Proceed with caution.</strong> 🚀</p>
+    </div>
+</body>
+</html>
