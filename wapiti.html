@@ -60,22 +60,26 @@
         <h2>Mission Execution: Wapiti & Nikto Commands</h2>
         
         <h3>Initialize the Lab</h3>
-        <pre><code>labtainer webscan</code></pre>
+        <pre><code>labtainer wapiti</code></pre>
         
         <h3>Visit the Target Site (Optional)</h3>
         <pre><code>firefox https://ethreal.com</code></pre>
+        
+        <h3>Explore Wapiti</h3>
+        <p>Review the help documentation.</p>
+        <pre><code>wapiti --help</code></pre>
         
         <h3>Run Wapiti Scan</h3>
         <p>Execute Wapiti against the target web application and generate an HTML report.</p>
         <pre><code>wapiti -u http://ethreal.com -o wapiti_report -f html</code></pre>
         
+        <h3>Explore Nikto</h3>
+        <p>Review the help documentation.</p>
+        <pre><code>nikto -Help</code></pre>
+
         <h3>Run Nikto Scan</h3>
         <p>Run Nikto to scan the same target and output an HTML report.</p>
-        <ol>
-            <li><pre><code>wget --spider --no-check-certificate -r -nd https://ethereal.com -o urls.txt</code></pre></li>
-            <li><pre><code>cat urls.txt | grep "https" | awk '{print $3}' | sort -u > targets.txt</code></pre></li>
-            <li><pre><code>for url in $(cat targets.txt); do nikto -h $url -o "nikto_${url##*/}.html" -Format htm; done</code></pre></li>
-        </ol>
+        <pre><code>nikto -h https://ethreal.com -o "nikto.html" -Format htm</code></pre>
         
         <h2>Intelligence Report: Analysis Questions</h2> 
         <ul>
@@ -98,4 +102,3 @@
     </div>
 </body>
 </html>
-

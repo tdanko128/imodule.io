@@ -41,7 +41,7 @@
         <h3>2. Run SQLMap</h3>
         <ul>
             <li>Execute SQLMap against identified endpoints to test for SQL Injection vulnerabilities.</li>
-            <li>Generate structured <strong>HTML reports</strong> for review.</li>
+            <li>Extract Data</li>
         </ul>
 
         <h3>3. Analyze Collected Data</h3>
@@ -50,28 +50,29 @@
             <li>Evaluate the database structure, if accessible.</li>
         </ul>
 
-        <h3>4. Explore Different SQL Injection Techniques</h3>
-        <p>Use the following techniques to gain a deeper understanding of SQLMap:</p>
+        <h3>4. File Your Intelligence Report</h3>
         <ul>
-            <li><strong>Boolean-Based SQL Injection</strong>: Detects vulnerabilities by evaluating True/False conditions.</li>
-            <pre><code>sqlmap -u "https://ethreal.com/index.php?id=1" --data="username=finnwise" --technique=B</code></pre>
-            
-            <li><strong>Time-Based Blind SQL Injection</strong>: Determines vulnerabilities by measuring response time.</li>
-            <pre><code>sqlmap -u "https://ethreal.com/index.php?id=1" --data="username=finnwise" --technique=T</code></pre>
-            
-            <li><strong>Error-Based SQL Injection</strong>: Extracts database details using error messages.</li>
-            <pre><code>sqlmap -u "https://ethreal.com/index.php?id=1" --data="username=finnwise" --technique=E</code></pre>
-            
-            <li><strong>Dumping Database Tables</strong>: Retrieves database information.</li>
-            <pre><code>sqlmap -u "https://ethreal.com/index.php?id=1" --data="username=finnwise" -D database_name --tables</code></pre>
-        </ul>
-        
-        <h3>5. File Your Intelligence Report</h3>
-        <ul>
-            <li>Submit the SQLMap HTML report.</li>
             <li>Provide a <strong>detailed analysis</strong> of findings.</li>
             <li>Recommend <strong>defensive countermeasures</strong> Ethreal could implement to mitigate security risks.</li>
         </ul>
+
+        <h2>Mission Execution: SQLMap Commands</h2>
+        
+        <h3>Initialize the Lab</h3>
+        <pre><code>labtainer sqlmap</code></pre>
+        
+        <h3>Visit the Target Site (Optional)</h3>
+        <pre><code>firefox https://ethreal.com</code></pre>
+        
+        <h3>Explore SQLMap</h3>
+        <p>Review the help documentation.</p>
+        <pre><code>sqlmap --help</code></pre>
+        
+        <h3>Run SQLMap Scan</h3>
+        <p>Execute sqlmap against the target web application and extract database report.</p>
+        <pre><code>wapiti -u http://ethreal.com -o wapiti_report -f html</code></pre>
+        
+
 
         <h2>Intelligence Report: Analysis Questions</h2>
         <ul>
