@@ -7,7 +7,7 @@
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
         h1, h2, h3 { color: #333; }
-        code { background: #f4f4f4; padding: 5px; display: block; border-radius: 5px; }
+        code { background: #f4f4f4; padding: 5px; display: inline-block; border-radius: 5px; }
         pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
         .container { max-width: 800px; margin: auto; padding: 20px; }
     </style>
@@ -69,8 +69,24 @@
         <pre><code>sqlmap --help</code></pre>
         
         <h3>Run SQLMap Scan</h3>
-        <p>Execute sqlmap against the target web application and extract database report.</p>
-        <pre><code>wapiti -u http://ethreal.com -o wapiti_report -f html</code></pre>
+        <p>Execute sqlmap against the target web application and extract database report. Complete the prompts</p>
+        <pre><code>sqlmap --wizard</code></pre>
+        
+        <pre>Please enter full target URL (-u): <code>https://ethreal.com/backend/login</code></pre>
+
+        <pre>POST data (--data) [Enter for None]: Press `Enter`</pre>
+
+        <pre>Injection difficulty (--level/--risk). Please choose:
+            [1] Normal (default)
+            [2] Medium
+            [3] Hard
+        Choose `3`</pre>
+
+        <pre>Enumeration (--banner/--current-user/etc). Please choose:
+            [1] Basic (default)
+            [2] Intermediate
+            [3] All
+        Choose `3`</pre>
         
 
 
